@@ -1,0 +1,108 @@
+/*!
+ * Start Bootstrap - Coming Soon v4.0.0-beta.2 (https://startbootstrap.com/template-overviews/coming-soon)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-coming-soon/blob/master/LICENSE)
+ */
+html {
+    font-family: "Lato", sans-serif;
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+
+h1 {
+  font-family: Montserrat;
+  color: #e84118;
+  text-align: center;
+  font-size: 80px;
+}
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Merriweather';
+  font-weight: 700;
+}
+
+body {
+  height: 100%;
+  position: relative;
+  font-family: 'Avenir Light';
+  font-weight: 300;
+  background-color: #ffffff;
+}
+
+.container{
+  display: grid;
+  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+}
+
+.container-home {
+  margin-top: 5em;
+  align-items: center;
+  height: 100%;
+}
+
+.logo{
+  margin: auto;
+  width: 50vw;
+  position: relative;
+  grid-column: 2;
+  grid-row: 1;
+  padding-bottom: 30px;
+  padding-top: 20%;
+}
+
+.search{
+  grid-column: 1/-1;
+  grid-row: 2;
+  font-size: 20px;
+  font-family: "Avenir Light", Arial, Helvetica, sans-serif;
+  height: 40px;
+  width: 100%
+  color: #585858;
+  box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.1);
+  border: 0px solid transparent;
+  border-radius: 0.5rem;
+  outline: none;
+}
+
+.search input {
+  width: 66vw;
+  padding-left: 0.75em;
+}
+
+.search input[type="text"] {
+  font-size: 18px;
+  font-family: "Avenir Light", Arial, Helvetica, sans-serif;
+  font-weight: 40px;
+  color: #585858;
+  vertical-align: middle;
+  padding-top: 1%;
+  border: 0px solid transparent;
+  border-radius: 0.5rem;
+}
+
+.search input[type="text"]::placeholer {
+  font-family: "Avenir Light", Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  color: #a4a4a4;
+}
+
+.search p {
+  color: #b3b3b3;
+  font-size: 1.4rem;
+  line-height: 1.7rem;
+  margin-top: 2.3rem;
+  text-align: right;
+}
+
+.text{
+  font-family: "Avenir Light", Arial, Helvetica, sans-serif;
+  font-weight: 200;
+  color: #a4a4a4;
+  outline: none;
+  border-width: 0px;
+}
