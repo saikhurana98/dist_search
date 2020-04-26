@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ComingsoonConfig(AppConfig):
-    name = 'comingsoon'
+class WebConfig(AppConfig):
+    name = 'web'
