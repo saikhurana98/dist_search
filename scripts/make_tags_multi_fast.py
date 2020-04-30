@@ -20,7 +20,7 @@ def execute_commands(cmds):
         first_list = list(nltk.word_tokenize(title))
         for word in first_list:
             try:
-                test = unworthy_words[word]
+                test = unworthy_words[word.lower()]
             except KeyError:
                 final_tags.append(word)
         final_tags = ','.join(final_tags)
@@ -30,9 +30,9 @@ def execute_commands(cmds):
 
 def func():
 
-    filepath = os.path.join('src/Data/Movie.db')
+    filepath = os.path.join('../src/Data/Movie.db')
     print(filepath)
-    conn = sqlite3.connect('Movie.db')
+    conn = sqlite3.connect(filepath)
     # create cursor to browese db
     c = conn.cursor()
     # query db
