@@ -3,8 +3,8 @@ import sqlite3
 import json
 
 def main():
-    filepath = os.path.join('../src/Data/Movie.db')
-    # print(filepath)
+    filepath = os.path.join(os.getcwd(),'src', 'Data', 'Movie.db')
+    print(filepath)
     conn = sqlite3.connect(filepath)
     c = conn.cursor()
     c.execute("SELECT id, title, year, tag_list, year FROM Movie;")
