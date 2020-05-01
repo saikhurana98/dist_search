@@ -16,7 +16,12 @@ h1 {
   font-size: 80px;
 }
 h2,
-h3,
+h3 {
+  font-family: Montserrat;
+  color: #e84118;
+  text-align: left;
+  font-size: 40px;
+},
 h4,
 h5,
 h6 {
@@ -32,11 +37,17 @@ body {
   background-color: #ffffff;
 }
 
-.container{
-  display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+/* .container{ */
+  /* display: grid; */
+  /* grid-template-rows: repeat(auto-fit, minmax(100px, 1fr)); */
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* justify-items: center; */
+/* } */
+
+.movie_item {
+  margin-top: 10% !important;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .container-home {

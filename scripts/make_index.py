@@ -21,7 +21,7 @@ def main():
             
             leaf_list = []
             try:
-                sub_dict = index[str(tag)]
+                sub_dict = index[str(tag.lower())]
             except KeyError:
                 sub_dict = {}
 
@@ -34,9 +34,9 @@ def main():
 
             sub_dict[year] = leaf_list
             
-            index[str(tag)] = sub_dict
+            index[str(tag.lower())] = sub_dict
     # print(index)
-    with open('../src/Data/index.json','w+') as fp:
+    with open(os.path.join(os.getcwd(),'src', 'Data', 'index.json'),'w+') as fp:
         fp.write(json.dumps(index))
 
 if __name__ == "__main__":
