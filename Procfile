@@ -1,0 +1,1 @@
+web: gunicorn src/dist_search.wsgi

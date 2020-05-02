@@ -1,0 +1,5 @@
+django
+nltk
+fuzzywuzzy
+gunicorn
+django_heroku
