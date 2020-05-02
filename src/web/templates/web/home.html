@@ -41,7 +41,7 @@
     <div class="search">
       <input class="text" name="q" type="text" placeholder="Search for a movie">
       <a href="#"></a>
-      <p>Press return to search</p>
+      <p class="return">Press return to search</p>
     </div>
   </form>
   {% else %}
@@ -53,7 +53,7 @@
         </h3>
       </a>
       <form class="form-inline">
-        <input value="{{ request.GET.q }}" name="q" class="form-control mr-sm-2 text" type="search"
+        <input value="{{ request.GET.q }}" name="q" class="val form-control mr-sm-2 text" type="search"
           placeholder="Search for a movie" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
       </form>
@@ -65,22 +65,23 @@
     <div class="row">
       {% for movie in page_obj %}
       <div class="col col-sm-12 col-md-4 col-lg-3">
-        <div class="card movie_item" align="center"  style="width: 20rem;">
+        <div class="card card_style" align="center"  style="width: 20vw;">
           {% if movie.img %}
           <img class="card-img-top" src="{{ movie.img }}" alt="Card image cap">
           {% else %}
           <img class="card-img-top" src="{% static 'images/stock.jpg' %}" alt="Card image cap"> 
           {% endif %}
           <div class="card-body">
-            <h5 class="card-title">{{ movie.title }}</h5>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">{{ movie.runtime }} /</li>
-              <li class="list-group-item">{{ movie.rating }}</li>
+            <h5 class="title">{{ movie.title }}</h5>
+            <ul class="card_list">
+              <li class="card_list_item"><span class="rating">{{ movie.rating }}</span> /</li>
+              <li class="card_list_item"><span class="GreenTxt">{{ movie.runtime }}</span> /</li>
+              <li class="card_list_item">{{ movie.genre }}</li>
             </ul>
-            <p class="card-text">{{ movie.description }}</p>
+            <p class="card_text">{{ movie.description }}</p>
           </div>
-          <div class="card-body">
-            <a href="{{ movie.imdb }}" target="_blank" class="card-link">Read More>></a>
+          <div class="body">
+            <a href="{{ movie.imdb }}" target="_blank" class="card-link"><p class="GreenTxt">Read More>></p></a>
           </div>
         </div>
       </div>

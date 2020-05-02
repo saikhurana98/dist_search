@@ -32,7 +32,7 @@ def getMovies(id_list=[]):
                       'id': movie_id})
             movie = c.fetchone()
             Movies.append(
-                Movie(title=movie[0], description=movie[1], img_url=movie[2], genre='/ '.join(eval(movie[3])), runtime=movie[4], imdb_url=movie[5], rating=movie[6], metascore=movie[7]))
+                Movie(title=movie[0], description=movie[1], img_url=movie[2], genre=', '.join(eval(movie[3])), runtime=movie[4], imdb_url=movie[5], rating=movie[6], metascore=movie[7]))
     conn.close()
     return Movies
 
