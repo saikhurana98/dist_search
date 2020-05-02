@@ -2,16 +2,22 @@ html {
     font-family: "Lato", sans-serif;
     box-sizing: border-box;
     font-size: 62.5%;
+    background-color: #161625;
 }
 
 h1 {
   font-family: Montserrat;
-  color: #e84118;
+  color: #40c39c;
   text-align: center;
   font-size: 80px;
 }
 h2,
-h3,
+h3 {
+  font-family: Montserrat;
+  color: #40c39c;
+  text-align: left;
+  font-size: 40px;
+},
 h4,
 h5,
 h6 {
@@ -24,22 +30,41 @@ body {
   position: relative;
   font-family: 'Avenir Light';
   font-weight: 300;
-  background-color: #ffffff;
+  background-color: #161625;
 }
 
-.container{
-  display: grid;
-  grid-template-rows: repeat(auto-fit, minmax(100px, 1fr));
-  grid-template-columns: 1fr 1fr 1fr;
-  justify-items: center;
+@font-face {
+  font-family: 'archiaregular';
+  src: url('../../static/vendor/font-awesome/fonts/archia-regular-webfont.eot');
+  src: url('../../static/vendor/font-awesome/fonts/archia-regular-webfont.eot?#iefix') format('embedded-opentype'),
+       url('../../static/vendor/font-awesome/fonts/archia-regular-webfont.woff2') format('woff2'),
+       url('../../static/vendor/font-awesome/fonts/archia-regular-webfont.woff') format('woff'),
+       url('../../static/vendor/font-awesome/fonts/archia-regular-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+p{
+  font-family: "archiaregular";
+}
+
+.movie_item {
+  margin-top: 10% !important;
+  text-align: center;
+  margin: 0 auto;
 }
 
 .container-home {
   margin-top: 5em;
   align-items: center;
   height: 100%;
+  background-color: #161625;
 }
 
+.nav{
+  background-color: #161625;
+}
 .logo{
   margin: auto;
   width: 50vw;
@@ -50,7 +75,6 @@ body {
   padding-top: 20%;
 }
 
-
 .search{
   grid-column: 1/-1;
   grid-row: 2;
@@ -58,38 +82,42 @@ body {
   font-family: "Avenir Light", Arial, Helvetica, sans-serif;
   height: 40px;
   width: 100%
-  color: #585858;
-  box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 35px rgba(0,0,0,.1);
+  color: #6c757d;
   border: 0px solid transparent;
   border-radius: 0.5rem;
   outline: none;
 }
 
 .search input {
-  width: 66vw;
+  width: 100%;
   padding-left: 0.75em;
+  background-color: #1e1e30;
 }
 
 .search input[type="text"] {
   font-size: 18px;
-  font-family: "Avenir Light", Arial, Helvetica, sans-serif;
+  font-family: archiaregular, Arial, Helvetica, sans-serif;
   font-weight: 40px;
   color: #585858;
   vertical-align: middle;
   padding-top: 1%;
+  padding-bottom: 1%;
   border: 0px solid transparent;
   border-radius: 0.5rem;
 }
 
 .search input[type="text"]::placeholer {
-  font-family: "Avenir Light", Arial, Helvetica, sans-serif;
+  font-family: archiaregular, Arial, Helvetica, sans-serif;
+  font-size: 12px;
   font-weight: 200;
-  color: #a4a4a4;
+  color: #bdbdbd;
 }
 
 .search p {
-  color: #b3b3b3;
+  color: #bdbdbd;
   font-size: 1.4rem;
+  font-family: archiaregular;
   line-height: 1.7rem;
   margin-top: 2.3rem;
   text-align: right;
@@ -98,7 +126,7 @@ body {
 .text{
   font-family: "Avenir Light", Arial, Helvetica, sans-serif;
   font-weight: 200;
-  color: #a4a4a4;
+  color: #bdbdbd;
   outline: none;
   border-width: 0px;
 }
@@ -191,4 +219,67 @@ body {
 
 .results-logo img {
   width: 50px;
+}
+
+.card-title{
+  font-size: 24px;
+  font-family: Montserrat;
+}
+
+.card-img-top {
+  width:100%;
+  height:100%;
+  z-index:111 !important;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, 
+			color-stop(0.00,  rgba(0,0,0,1)),
+			color-stop(0.35,  rgba(0,0,0,1)),
+			color-stop(0.50,  rgba(0,0,0,1)),
+			color-stop(0.65,  rgba(0,0,0,1)),
+			color-stop(0.85,  rgba(0,0,0,0.6)),
+      color-stop(1.00,  rgba(0,0,0,0)));
+
+  position:relative;
+
+}
+
+.GreenTxt{
+  font-family: archiaregular;
+  color: #40c39c;
+}
+
+.found{
+  font-family: archiaregular;
+  color: #bdbdbd;
+}
+
+.btn-outline-success {
+  color: #40c39c;
+  background-color: transparent;
+  background-image: none;
+  border-color: #40c39c;
+}
+
+.btn-outline-success:hover {
+  color: #fff;
+  background-color: #40c39c;
+  border-color: #40c39c;
+}
+
+.btn-outline-success:focus, .btn-outline-success.focus {
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+}
+
+.btn-outline-success.disabled, .btn-outline-success:disabled {
+  color: #40c39c;
+  background-color: transparent;
+}
+
+.btn-outline-success:not([disabled]):not(.disabled):active, .btn-outline-success:not([disabled]):not(.disabled).active,
+.show > .btn-outline-success.dropdown-toggle {
+  color: #fff;
+  background-color: #40c39c;
+  border-color: #40c39c;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
 }
