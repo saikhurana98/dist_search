@@ -1,1 +1,1 @@
-web: gunicorn src/dist_search.wsgi
+web: gunicorn dist_search.wsgi
