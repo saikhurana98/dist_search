@@ -1,5 +1,7 @@
 django
 nltk
 fuzzywuzzy
+python-Levenshtein
 gunicorn
 django_heroku
+whitenoise

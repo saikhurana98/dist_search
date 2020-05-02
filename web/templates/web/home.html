@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Movie Search</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- Custom fonts for this template -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i"
+    rel="stylesheet">
+  <link href="{% static 'vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+  <!-- Font Awesome script-->
+  <script src="https://kit.fontawesome.com/1dbf53c47b.js" crossorigin="anonymous"></script>
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/app.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+  {% if not request.GET.q %}
+  <form class="container container-home">
+    <div class="logo">
+      <h1>MOVIFLIX</h1>
+    </div>
+    <div class="search">
+      <input class="text" name="q" type="text" placeholder="Search for a movie">
+      <a href="#"></a>
+      <p class="return">Press return to search</p>
+    </div>
+  </form>
+  {% else %}
+  <nav class="navbar nav">
+    <div class="container">
+      <a class="navbar-brand">
+        <h3>
+          MOVIFLIX
+        </h3>
+      </a>
+      <form class="form-inline">
+        <input value="{{ request.GET.q }}" name="q" class="val form-control mr-sm-2 text" type="search"
+          placeholder="Search for a movie" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+  <div class="container">
+    <br>
+    <p class="found" align="center">Found <span class=GreenTxt>{{length}}</span> movies matching your search</p><br><br><br>
+    <div class="row myrow">
+      {% for movie in page_obj %}
+      <div class="col col-sm-12 col-md-4 col-lg-3">
+        <div class="card card_style" align="center"  style="width: 20vw;">
+          {% if movie.img %}
+          <img class="card-img-top" src="{{ movie.img }}" alt="Card image cap">
+          {% else %}
+          <img class="card-img-top" src="{% static 'images/stock.jpg' %}" alt="Card image cap"> 
+          {% endif %}
+          <div class="card-body">
+            <h5 class="title">{{ movie.title }}</h5>
+            <ul class="card_list">
+              <li class="card_list_item"><span class="rating">{{ movie.rating }}</span> /</li>
+              <li class="card_list_item"><span class="GreenTxt">{{ movie.runtime }}</span> /</li>
+              <li class="card_list_item">{{ movie.genre }}</li>
+            </ul>
+            <p class="card_text">{{ movie.description }}</p>
+          </div>
+          <div class="body">
+            <a href="{{ movie.imdb }}" target="_blank" class="card-link"><p class="GreenTxt">Read More>></p></a>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="container" align="center">
+    <nav aria-label="Page navigation example" >
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li class="page-item"><a class = "page-link" href="?q={{ request.GET.q }}&page=1">&laquo; First</a></li>
+        <li class="page-item"><a class = "page-link" href="?q={{ request.GET.q }}&page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link">&laquo; Previous</a></li>
+        {% endif %}
+        <li class="page-item"><a class="page-link" href="#">{{ page_obj.number }}</a></li>
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class = "page-link" href="?q={{ request.GET.q }}&page={{ page_obj.next_page_number }}">Next</a></li>
+        <li class="page-item"><a class = "page-link" href="?q={{ request.GET.q }}&page={{ page_obj.paginator.num_pages }}">Last &raquo;</a></li>
+        {% else %}
+        <li class="page-item disabled"><a class="page-link">Next &raquo;</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </div>
+  </div>
+  {% endif %}
+</body>
+
+</html>
