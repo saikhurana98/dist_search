@@ -244,6 +244,8 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
   /* height: 600px; */
+  width: 13.5vw !important;
+  min-height: 63vh;
 }
 
 .card_list{
@@ -360,3 +362,31 @@ body {
   padding-top: 0px;
   height: fit-content;
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 100%;
+  }
+
+  h1{
+    font-size: 7vh;
+    padding-left: 0px;
+    position: relative;
+    left: -12vw;
+  }
+  .logo{
+    padding: 0 !important;
+    /* position: absolute; */
+    left: 0 !important;
+  }
+  .container-home{
+    position: absolute;
+    top: 17vh;
+  }
+  .search{
+    margin-top: 8%;
+  }
+  }
+}
+
