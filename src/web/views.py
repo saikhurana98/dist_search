@@ -1,8 +1,11 @@
-from django.shortcuts import render
-from django.core.paginator import Paginator
-import os
 import json
+import os
 import sqlite3
+
+from django.core.paginator import Paginator
+from django.shortcuts import render
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 
 
 class Movie:
@@ -15,9 +18,14 @@ class Movie:
         self.description = description if description else None
         self.rating = rating if rating else None
         self.metascore = metascore if metascore else None
+        self.relevence = -1
+
+    def update_relevence(self, new_relevence):
+        self.relevence = new_relevence if self.relevence == - \
+            1 else (new_relevence + self.relevence) / 2
 
 
-def getMovies(id_list=[]):
+def getMovies(id_list=[], search_string=''):
 
     conn = sqlite3.connect(os.path.join(os.getcwd(), 'Data', 'Movie.db'))
     c = conn.cursor()
@@ -31,9 +39,17 @@ def getMovies(id_list=[]):
             c.execute(""" SELECT title, description, img_url, genre, runtime, imdb_url, rating, metascore FROM Movie WHERE id = :id """, {
                       'id': movie_id})
             movie = c.fetchone()
-            Movies.append(
-                Movie(title=movie[0], description=movie[1], img_url=movie[2], genre=', '.join(eval(movie[3])), runtime=movie[4], imdb_url=movie[5], rating=movie[6], metascore=movie[7]))
+            Movie(title=movie[0], description=movie[1], img_url=movie[2], genre=', '.join(eval(movie[3])), runtime=movie[4], imdb_url=movie[5], rating=movie[6], metascore=movie[7]))
+            m = Movie(title=movie[0], description=movie[1], img_url=movie[2], genre=', '.join(eval(movie[3])), runtime=movie[4], imdb_url=movie[5], rating=movie[6], metascore=movie[7])
+            m.update_relevence(fuzz.ratio(m.title, search_string))
+            Movies.append(m)
     conn.close()
+
+    def sort_function(m):
+        return m.relevence
+
+    Movies.sort(reverse=True, key=sort_function)
+
     return Movies
 
 
@@ -52,11 +68,14 @@ def home(request):
                     result_list_id.extend(sub_dict[year])
             except KeyError:
                 pass
-    movies = getMovies(id_list=result_list_id)
+    movies = getMovies(id_list=result_list_id, search_string=q)
     length = len(movies)
-    data = Paginator(movies, 18)
+    data = Paginator(movies, 24)
     page = request.GET.get('page')
     page_obj = data.get_page(page)
+
+    # for m in movies:
+    #     print(f'\n Movie:{m.title} Relevence: {m.relevence}')
 
     context = {
         'page_obj': page_obj,
